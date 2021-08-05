@@ -1,0 +1,8 @@
+version: "3.2"
+
+services:
+  act-backend:
+    container_name: act-backend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"

@@ -1,0 +1,11 @@
+version: "3.2"
+
+services:
+  act-backend:
+    container_name: act-backend
+    image: node:10
+    volumes:
+      - .:/server
+    command: sh -c 'cd /server && yarn && yarn start:dev'
+    env_file:
+      - .env
