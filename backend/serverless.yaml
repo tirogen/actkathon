@@ -1,0 +1,45 @@
+service:
+  name: zenbrief
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'staging'}
+  region: ap-southeast-1
+  timeout: 20
+  memorySize: 512
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - ses:SendEmail
+      Resource: "*"
+  environment:
+    NODE_ENV: ${env:NODE_ENV}
+    MICROSERVICE_URL: ${env:MICROSERVICE_URL}
+    MICROSERVICE_KEY: ${env:MICROSERVICE_KEY}
+    PORT: ${env:PORT}
+    JWT_SECRET: ${env:JWT_SECRET}
+    INVITE_ENCRYPT_KEY: ${env:INVITE_ENCRYPT_KEY}
+    STRIPE_CUSTOMER_PORTAL: ${env:STRIPE_CUSTOMER_PORTAL}
+    STRIPE_SUCCESS_URL: ${env:STRIPE_SUCCESS_URL}
+    STRIPE_CANCEL_URL: ${env:STRIPE_CANCEL_URL}
+    SENTRY_DSN: ${env:SENTRY_DSN}
+    MONGODB_URI: ${env:MONGODB_URI}
+    STRIPE_SECRET_KEY: ${env:STRIPE_SECRET_KEY}
+    STRIPE_PUBLISHABLE_KEY: ${env:STRIPE_PUBLISHABLE_KEY}
+    STRIPE_WEBHOOK_SECRET: ${env:STRIPE_WEBHOOK_SECRET}
+    STRIPE_STARTER_PLAN: ${env:STRIPE_STARTER_PLAN}
+    STRIPE_STANDARD_PLAN: ${env:STRIPE_STANDARD_PLAN}
+    STRIPE_PRO_PLAN: ${env:STRIPE_PRO_PLAN}
+
+functions:
+  main:
+    handler: src/lambda.handler
+    events:
+      - http:
+          method: any
+          path: /{any+}
