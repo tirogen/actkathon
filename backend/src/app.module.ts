@@ -6,7 +6,8 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import configuration from './config/configuration';
 import { HttpMicroserviceModule } from './http-microservice/http-microservice.module';
-import { UserModule } from './user/user.module';
+import { CitizenModule } from './user/citizen/user.module';
+import { RepresentativeModule } from './user/representative/user.module';
 
 @Module({
   imports: [
@@ -25,7 +26,9 @@ import { UserModule } from './user/user.module';
       inject: [ConfigService],
     }),
     AuthModule,
-    UserModule,
+    // UserModule,
+    RepresentativeModule,
+    CitizenModule,
     HttpMicroserviceModule,
   ],
   controllers: [AppController],

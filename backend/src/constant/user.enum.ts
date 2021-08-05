@@ -1,9 +1,6 @@
 export enum UserRole {
-  Owner = 'Owner',
-  Admin = 'Admin',
-  Manager = 'Manager',
-  Member = 'Member',
+  Representative = 'representative',
+  // Member of the House of Representative
+  NCZ = 'normalCitizen',
+  // Normal Citizen
 }
-
-export const adminPermission = [UserRole.Admin, UserRole.Manager, UserRole.Member];
-export const managerPermission = [UserRole.Manager, UserRole.Member];

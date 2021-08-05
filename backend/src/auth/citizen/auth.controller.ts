@@ -1,13 +1,13 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
-import { PublicAPI } from '../decorators/public-api.decorator';
-import { User } from '../user/user.schema';
-import { AuthCredentialsDto, AuthResponseDto, ChangePasswordDto } from './auth.dto';
+import { PublicAPI } from '../../decorators/public-api.decorator';
+import { Citizen } from '../../user/citizen/user.schema';
+import { AuthCredentialsDto } from '../auth.dto';
 import { AuthService } from './auth.service';
 
 @ApiBearerAuth()
-@ApiTags('Auth')
-@Controller('auth')
+@ApiTags('Citizen')
+@Controller('citizen')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
@@ -17,15 +17,15 @@ export class AuthController {
     return this.authService.login(credential);
   }
 
-  @PublicAPI()
-  @Post('password/change')
-  async changePassword(@Body() dto: ChangePasswordDto): Promise<AuthResponseDto> {
-    return this.authService.changePassword(dto);
-  }
+  // @PublicAPI()
+  // @Post('password/change')
+  // async changePassword(@Body() dto: ChangePasswordDto): Promise<AuthResponseDto> {
+  //   return this.authService.changePassword(dto);
+  // }
 
   @PublicAPI()
   @Post('register')
-  async register(@Body() user: User) {
+  async register(@Body() user: Citizen) {
     return this.authService.register(user);
   }
 }
