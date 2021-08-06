@@ -11,6 +11,7 @@ enum Icon {
 }
 
 const REPORT_PATH = ['/report'];
+const RANK_PATH = ['/rank'];
 
 const NavBar = () => {
     const router = useRouter();
@@ -19,6 +20,8 @@ const NavBar = () => {
     useEffect(() => {
         if (REPORT_PATH.includes(router.pathname)) {
             setHighlight(Icon.REPORT);
+        } else if (RANK_PATH.includes(router.pathname)) {
+            setHighlight(Icon.RANK);
         } else {
             setHighlight(Icon.HOME);
         }

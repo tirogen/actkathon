@@ -5,8 +5,7 @@ const ReportCard = () => {
                 <div
                     className="report-image"
                     style={{
-                        backgroundImage:
-                            'url(https://images.unsplash.com/photo-1486673748761-a8d18475c757?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&w=600)',
+                        backgroundImage: 'url(https://images.unsplash.com/photo-1486673748761-a8d18475c757?w=600)',
                     }}
                 ></div>
                 <div className="report-detail">
