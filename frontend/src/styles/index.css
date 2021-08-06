@@ -41,3 +41,62 @@ div#__next > div {
   padding: 15px;
   text-align: center;
 }
+
+.title-shadow {
+  text-shadow: 0 2px 5px rgb(0 0 0 / 30%);
+}
+
+.home-card {
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  height: 180px;
+}
+
+.home-card-image {
+  opacity: 0.6;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+}
+
+.home-card-content {
+  background-color: rgb(214 214 214 / 50%);
+  position: relative;
+  padding: 10px;
+  height: 180px;
+}
+
+.card-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.card-text-title {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.card-text-location {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.card-text-status {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.card-vote {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.card-vote-text {
+  font-weight: 600;
+}
