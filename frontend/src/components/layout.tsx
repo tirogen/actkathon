@@ -5,7 +5,7 @@ type Props = {
 };
 
 const Layout = ({ children }: Props) => {
-    return <div className="w-full p-4">{children}</div>;
+    return <div className="w-full p-5">{children}</div>;
 };
 
 export default Layout;

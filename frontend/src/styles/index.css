@@ -10,6 +10,20 @@ div#__next > div {
   height: 100%;
 }
 
-body {
-	font-family: 'K2D', sans-serif;
+* {
+	font-family: 'Pridi', sans-serif !important;
+}
+
+.otp-input {
+  background-color: #ECECED;
+  border-radius: 5px;
+  border: solid 2px #000;
+  width: 100% !important;
+  height: 50px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.otp-text {
+  color: #9F9E9E;
 }
