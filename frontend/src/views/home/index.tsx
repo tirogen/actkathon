@@ -2,11 +2,14 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import { observer } from 'mobx-react-lite';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import React from 'react';
 import HomeCard from '../../components/home-card';
 import Layout from '../../components/layout';
 
 export const Home = observer(() => {
+    const router = useRouter();
+
     return (
         <Layout>
             <Head>
@@ -18,7 +21,14 @@ export const Home = observer(() => {
                     <HomeCard />
                 </div>
             </div>
-            <Fab size="small" className="create-button" color="primary">
+            <Fab
+                size="small"
+                className="create-button"
+                color="primary"
+                onClick={() => {
+                    router.push('/create-report');
+                }}
+            >
                 <AddIcon />
             </Fab>
         </Layout>

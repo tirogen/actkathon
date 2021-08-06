@@ -31,13 +31,31 @@ const NavBar = () => {
         <div className="nav-bar">
             <div className="flex">
                 <div className="nav-bar-icon">
-                    <HomeIcon fontSize="large" color={highlight == Icon.HOME ? 'inherit' : 'disabled'} />
+                    <HomeIcon
+                        fontSize="large"
+                        color={highlight == Icon.HOME ? 'inherit' : 'disabled'}
+                        onClick={() => {
+                            router.push('/');
+                        }}
+                    />
                 </div>
                 <div className="nav-bar-icon">
-                    <ListAltIcon fontSize="large" color={highlight == Icon.REPORT ? 'inherit' : 'disabled'} />
+                    <ListAltIcon
+                        fontSize="large"
+                        color={highlight == Icon.REPORT ? 'inherit' : 'disabled'}
+                        onClick={() => {
+                            router.push('/report');
+                        }}
+                    />
                 </div>
                 <div className="nav-bar-icon">
-                    <EmojiEventsIcon fontSize="large" color={highlight == Icon.RANK ? 'inherit' : 'disabled'} />
+                    <EmojiEventsIcon
+                        fontSize="large"
+                        color={highlight == Icon.RANK ? 'inherit' : 'disabled'}
+                        onClick={() => {
+                            router.push('/rank');
+                        }}
+                    />
                 </div>
             </div>
         </div>
