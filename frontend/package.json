@@ -1,8 +1,11 @@
 {
   "name": "act",
   "version": "1.0.0",
+  "engines": {
+    "node": "14"
+  },
   "scripts": {
-    "dev": "next dev -p 3311",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc"
