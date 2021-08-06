@@ -100,3 +100,9 @@ div#__next > div {
 .card-vote-text {
   font-weight: 600;
 }
+
+.create-button {
+	position: fixed !important;
+	bottom: 80px;
+	right: 20px;
+}

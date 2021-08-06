@@ -1,3 +1,5 @@
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 import { observer } from 'mobx-react-lite';
 import Head from 'next/head';
 import React from 'react';
@@ -16,6 +18,9 @@ export const Home = observer(() => {
                     <HomeCard />
                 </div>
             </div>
+            <Fab size="small" className="create-button" color="primary">
+                <AddIcon />
+            </Fab>
         </Layout>
     );
 });
