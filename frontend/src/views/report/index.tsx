@@ -13,7 +13,7 @@ export const Report = observer(() => {
 
     useEffect(() => {
         (async () => {
-            const data = await ReportService.getAll();
+            const data = await ReportService.getMy();
             setData(data);
         })();
     }, []);

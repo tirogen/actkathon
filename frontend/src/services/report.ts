@@ -19,7 +19,7 @@ class ReportService {
     }
 
     async getMy(): Promise<ReportResponse[]> {
-        const { data } = await axios.get('/report/citizen/ownedReport');
+        const { data } = await axios.get('/report/ownedReport');
         return data;
     }
 
