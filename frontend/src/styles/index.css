@@ -30,7 +30,7 @@ div#__next > div {
 
 .nav-bar {
   background-color: #FCFEFF;
-  position: absolute;
+  position: fixed;
   width: 100%;
   bottom: 0;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
@@ -140,4 +140,12 @@ div#__next > div {
 .report-status {
   font-size: 14px;
   font-weight: 300;
+}
+
+.image-upload>input {
+  display: none;
+}
+
+.bottom-indent {
+  height: 60px;
 }

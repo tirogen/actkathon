@@ -9,6 +9,7 @@ const Layout = ({ children }: Props) => {
     return (
         <div>
             <div className="w-full p-5">{children}</div>
+            <div className="bottom-indent"></div>
             <NavBar />
         </div>
     );

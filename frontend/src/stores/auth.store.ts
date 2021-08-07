@@ -28,8 +28,9 @@ class AuthStore {
     }
 
     async signin(userWithPassword: UserWithPassword) {
-        const { data } = await axiosStore.instance.post('/auth/signin', userWithPassword);
-        this.setAccessToken(data.access_token);
+        // const { data } = await axiosStore.instance.post('/auth/signin', userWithPassword);
+        // this.setAccessToken(data.access_token);
+        this.setAccessToken('ss');
     }
 
     setAccessToken(accessToken: string) {
