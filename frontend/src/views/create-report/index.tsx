@@ -1,7 +1,8 @@
 import TextField from '@material-ui/core/TextField';
 import { observer } from 'mobx-react-lite';
 import Head from 'next/head';
-import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
 import { BlackButton } from '../../components/black-button';
 import Layout from '../../components/layout';
 import ReportService from '../../services/report';
@@ -11,6 +12,7 @@ export const CreateReport = observer(() => {
     const [base64, setBase64] = useState<string>('');
     const [lat, setLat] = useState('0');
     const [lng, setLng] = useState('0');
+    const router = useRouter();
 
     const [topic, setTopic] = useState('');
     const [description, setDescription] = useState('');
@@ -37,21 +39,23 @@ export const CreateReport = observer(() => {
         }
     };
 
-    const getPosition = () => {
+    useEffect(() => {
         navigator.geolocation.getCurrentPosition(function (position) {
             setLat(position.coords.latitude.toString());
             setLng(position.coords.longitude.toString());
         });
-    };
+    }, []);
 
-    const createReport = () => {
-        ReportService.create({
+    const createReport = async () => {
+        await ReportService.create({
             topic,
             description,
-            image: base64,
+            image: base64.split(',')[1],
             lat,
             lng,
+            location,
         });
+        router.push('/');
     };
 
     return (
@@ -109,12 +113,12 @@ export const CreateReport = observer(() => {
                                 </div>
                                 <span>แนบภาพถ่าย</span>
                             </div>
-                            <div>
+                            {/* <div>
                                 <img src="/assets/location.png" width="55" className="m-auto" onClick={getPosition} />
                                 <span>ระบุพิกัดที่ตั้ง</span>
-                            </div>
+                            </div> */}
                         </div>
-                        {imagePreview !== '' && <img src={imagePreview} alt="Icone adicionar" />}
+                        {imagePreview !== '' && <img src={imagePreview} alt="Icone adicionar" className="m-auto" />}
                         <BlackButton variant="contained" fullWidth onClick={createReport}>
                             รายงานปัญหา
                         </BlackButton>

@@ -2,6 +2,7 @@ export type Report = {
     topic: string;
     description: string;
     image: string;
+    location: string;
     lat: string;
     lng: string;
 };

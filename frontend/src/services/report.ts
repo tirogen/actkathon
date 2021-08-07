@@ -8,6 +8,8 @@ class ReportService {
             description: report.description,
             latitude: report.lat,
             longitude: report.lng,
+            locationName: report.location,
+            imageFile: report.image,
         });
     }
 
