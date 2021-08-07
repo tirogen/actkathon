@@ -1,6 +1,6 @@
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 
-const DetailCard = () => {
+const DetailCard = ({ onVote }: { onVote: Function }) => {
     return (
         <div className="detail-card">
             <img src="https://images.unsplash.com/photo-1486673748761-a8d18475c757?w=600" className="home-card-image" />
@@ -11,7 +11,7 @@ const DetailCard = () => {
                     <p className="card-text-status"> กำลังดำเนินการ</p>
                 </div>
                 <div className="w-full card-vote">
-                    <ThumbUpIcon />
+                    <ThumbUpIcon onClick={() => onVote()} />
                     <p className="card-vote-text">4,250 Vote</p>
                 </div>
             </div>

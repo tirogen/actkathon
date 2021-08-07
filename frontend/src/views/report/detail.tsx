@@ -1,18 +1,31 @@
 import { observer } from 'mobx-react-lite';
 import Avatar from '@material-ui/core/Avatar';
 import Head from 'next/head';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../../components/layout';
 import DetailCard from '../../components/detail-card';
+import ReportService from '../../services/report';
+import { useRouter } from 'next/router';
 
 export const ReportDetail = observer(() => {
+    const router = useRouter();
+    const { id } = router.query;
+    const [data, setData] = useState([1, 2, 3]);
+
+    // useEffect(() => {
+    //     (async () => {
+    //         const data = await ReportService.get(id);
+    //         setData(data);
+    //     })();
+    // }, []);
+
     return (
         <Layout padding={false}>
             <Head>
                 <title>ปัญหาที่ร้องเรียน</title>
             </Head>
             <div style={{ height: '200px' }}>
-                <DetailCard />
+                <DetailCard onVote={async () => await ReportService.vote(id as string)} />
             </div>
             <div className="m-6">
                 <p className="font-semibold text-xl py-2"> รายละเอียดปัญหา</p>

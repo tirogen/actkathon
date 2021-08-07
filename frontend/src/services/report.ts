@@ -2,8 +2,8 @@ import axios from 'axios';
 import { Report } from './../types/report';
 
 class ReportService {
-    create(report: Report) {
-        return axios.post('/report/create', {
+    async create(report: Report) {
+        return await axios.post('/report/create', {
             topic: report.topic,
             description: report.description,
             latitude: report.lat,
@@ -11,11 +11,21 @@ class ReportService {
         });
     }
 
-    async getAll() {}
+    async getAll() {
+        return await axios.get('/report/fetch/all');
+    }
 
-    async get(reportId: string) {}
+    async getMy() {
+        return await axios.get('/report/citizen/ownedReport');
+    }
 
-    async vote(reportId: string) {}
+    async get(reportId: string) {
+        return await axios.get('/report/fetch/all');
+    }
+
+    async vote(reportId: string) {
+        return await axios.post(`/report/vote/${reportId}`);
+    }
 }
 
 export default new ReportService();
