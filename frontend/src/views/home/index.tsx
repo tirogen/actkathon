@@ -7,17 +7,19 @@ import React, { useEffect, useState } from 'react';
 import HomeCard from '../../components/home-card';
 import Layout from '../../components/layout';
 import ReportService from '../../services/report';
+import { ReportResponse } from '../../types/report';
 
 export const Home = observer(() => {
     const router = useRouter();
-    const [data, setData] = useState([1, 2, 3]);
+    const [data, setData] = useState<ReportResponse[]>([]);
 
-    // useEffect(() => {
-    //     (async () => {
-    //         const data = await ReportService.getAll();
-    //         setData(data);
-    //     })();
-    // }, []);
+    useEffect(() => {
+        (async () => {
+            const data = await ReportService.getAll();
+            console.log(data);
+            setData(data);
+        })();
+    }, []);
 
     return (
         <Layout>
@@ -26,10 +28,10 @@ export const Home = observer(() => {
             </Head>
             <div>
                 <h1 className="text-2xl title-shadow text-center">ปัญหาในพื้นที่ของคุณ</h1>
-                {data.map((report) => {
+                {data.map((report, idx) => {
                     return (
-                        <div className="mt-4" onClick={() => router.push('/report/1')}>
-                            <HomeCard />
+                        <div key={`report-${idx}`} className="mt-4" onClick={() => router.push('/report/1')}>
+                            <HomeCard detail={report} />
                         </div>
                     );
                 })}

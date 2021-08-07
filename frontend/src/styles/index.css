@@ -162,5 +162,5 @@ div#__next > div {
 }
 
 .bottom-indent {
-    height: 60px;
+    min-height: 65px;
 }

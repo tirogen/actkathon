@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Report } from './../types/report';
+import { Report, ReportResponse } from './../types/report';
 
 class ReportService {
     async create(report: Report) {
@@ -13,8 +13,9 @@ class ReportService {
         });
     }
 
-    async getAll() {
-        return await axios.get('/report/fetch/all');
+    async getAll(): Promise<ReportResponse[]> {
+        const { data } = await axios.get('/report/fetch/all');
+        return data;
     }
 
     async getMy() {

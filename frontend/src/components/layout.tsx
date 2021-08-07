@@ -9,7 +9,7 @@ type Props = {
 const Layout = ({ children, padding = true }: Props) => {
     return (
         <div className="flex flex-col items-center">
-            <div className={`w-full max-w-screen-md ${padding ? 'p-5' : ''}`}>{children}</div>
+            <div className={`w-full max-w-screen-md ${padding ? 'm-5' : ''}`}>{children}</div>
             <div className="bottom-indent"></div>
             <NavBar />
         </div>
