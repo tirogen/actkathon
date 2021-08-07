@@ -17,7 +17,7 @@ export const Home = observer(() => {
             </Head>
             <div>
                 <h1 className="text-2xl title-shadow text-center">ปัญหาในพื้นที่ของคุณ</h1>
-                <div className="mt-4">
+                <div className="mt-4" onClick={() => router.push('/report/1')}>
                     <HomeCard />
                 </div>
             </div>

@@ -3,12 +3,13 @@ import NavBar from './nav-bar';
 
 type Props = {
     children: React.ReactNode;
+    padding?: boolean;
 };
 
-const Layout = ({ children }: Props) => {
+const Layout = ({ children, padding = true }: Props) => {
     return (
         <div className="flex flex-col items-center">
-            <div className="w-full p-5 max-w-screen-md">{children}</div>
+            <div className={`w-full max-w-screen-md ${padding ? 'p-5' : ''}`}>{children}</div>
             <div className="bottom-indent"></div>
             <NavBar />
         </div>
