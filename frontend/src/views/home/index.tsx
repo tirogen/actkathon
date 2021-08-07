@@ -36,6 +36,7 @@ export const Home = observer(() => {
                     );
                 })}
             </div>
+            <div className="bottom-indent2"></div>
             <Fab
                 size="small"
                 className="create-button"

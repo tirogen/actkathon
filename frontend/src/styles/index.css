@@ -162,5 +162,10 @@ div#__next > div {
 }
 
 .bottom-indent {
-    min-height: 65px;
+    height: 65px;
+}
+
+
+.bottom-indent2 {
+    height: 80px;
 }
