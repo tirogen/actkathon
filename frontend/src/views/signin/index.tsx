@@ -27,8 +27,7 @@ export const Signin = observer(() => {
     const confirmOTP = async () => {
         if (/^0\d{9}$/.test(username) && /^\d{6}$/.test(password)) {
             await authStore.signin({
-                username,
-                password,
+                phoneNumber: username,
             });
             router.push('/');
         }

@@ -1,6 +1,7 @@
+import axios from 'axios';
 import { computed, makeObservable, observable } from 'mobx';
 import { axiosStore } from '.';
-import { User, UserWithPassword } from '../types/user';
+import { User } from '../types/user';
 
 class AuthStore {
     user: User | null;
@@ -27,10 +28,9 @@ class AuthStore {
         return !!this.accessToken;
     }
 
-    async signin(userWithPassword: UserWithPassword) {
-        // const { data } = await axiosStore.instance.post('/auth/signin', userWithPassword);
-        // this.setAccessToken(data.access_token);
-        this.setAccessToken('ss');
+    async signin(phoneNumberUser: User) {
+        const { data } = await axios.post('/citizen/login', phoneNumberUser);
+        this.setAccessToken(data.access_token);
     }
 
     setAccessToken(accessToken: string) {

@@ -35,5 +35,3 @@ yarn-error.log*
 
 public/posters/*
 !public/posters/poster.png
-
-.env
