@@ -33,6 +33,11 @@ export type ReportResponse = {
     imageFile: string;
 };
 
+export type RankResponse = {
+    count: number;
+    maintainer: Maintainer;
+};
+
 export type Creator = {
     createdAt: string;
     phoneNumber: string;
