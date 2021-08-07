@@ -16,7 +16,6 @@ export const Home = observer(() => {
     useEffect(() => {
         (async () => {
             const data = await ReportService.getAll();
-            console.log(data);
             setData(data);
         })();
     }, []);
@@ -30,7 +29,11 @@ export const Home = observer(() => {
                 <h1 className="text-2xl title-shadow text-center">ปัญหาในพื้นที่ของคุณ</h1>
                 {data.map((report, idx) => {
                     return (
-                        <div key={`report-${idx}`} className="mt-4" onClick={() => router.push('/report/1')}>
+                        <div
+                            key={`report-${idx}`}
+                            className="mt-4"
+                            onClick={() => router.push(`/report/${report._id}`)}
+                        >
                             <HomeCard detail={report} />
                         </div>
                     );

@@ -18,8 +18,9 @@ class ReportService {
         return data;
     }
 
-    async getMy() {
-        return await axios.get('/report/citizen/ownedReport');
+    async getMy(): Promise<ReportResponse[]> {
+        const { data } = await axios.get('/report/citizen/ownedReport');
+        return data;
     }
 
     async get(reportId: string) {

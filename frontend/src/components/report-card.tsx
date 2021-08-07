@@ -1,23 +1,23 @@
-const ReportCard = () => {
+import { ReportResponse } from '../types/report';
+
+const ReportCard = ({ detail }: { detail: ReportResponse }) => {
     return (
         <div className="report">
             <div className="flex">
                 <div
                     className="report-image"
                     style={{
-                        backgroundImage: 'url(https://images.unsplash.com/photo-1486673748761-a8d18475c757?w=600)',
+                        backgroundImage: `url("data:image/png;base64, ${detail.imageFile}")`,
                     }}
                 ></div>
                 <div className="report-detail overflow-hidden">
-                    <h2>ทางเท้าชำรุด</h2>
-                    <p className="report-detail-text">
-                        รายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียด
-                    </p>
+                    <h2>{detail.topic}</h2>
+                    <p className="report-detail-text">{detail.description}</p>
                 </div>
             </div>
             <div className="flex items-end">
                 <span className="report-status w-full">กำลังดำเนินการแก้ไข</span>
-                <span className="w-full text-right">2,430 Votes</span>
+                <span className="w-full text-right"> {detail.vote} Votes</span>
             </div>
         </div>
     );

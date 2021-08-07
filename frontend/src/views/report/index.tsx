@@ -5,17 +5,18 @@ import Head from 'next/head';
 import Layout from '../../components/layout';
 import ReportCard from '../../components/report-card';
 import ReportService from '../../services/report';
+import { ReportResponse } from '../../types/report';
 
 export const Report = observer(() => {
     const router = useRouter();
-    const [data, setData] = useState([1, 2, 3]);
+    const [data, setData] = useState<ReportResponse[]>([]);
 
-    // useEffect(() => {
-    //     (async () => {
-    //         const data = await ReportService.getAll();
-    //         setData(data);
-    //     })();
-    // }, []);
+    useEffect(() => {
+        (async () => {
+            const data = await ReportService.getAll();
+            setData(data);
+        })();
+    }, []);
 
     return (
         <Layout>
@@ -24,14 +25,19 @@ export const Report = observer(() => {
             </Head>
             <div>
                 <h1 className="text-2xl title-shadow text-center">ปัญหาที่คุณร้องเรียน</h1>
-                {data.map((report) => {
+                {data.map((report, idx) => {
                     return (
-                        <div className="mt-4">
-                            <ReportCard />
+                        <div
+                            key={`myreport-${idx}`}
+                            className="mt-4"
+                            onClick={() => router.push(`/report/${report._id}`)}
+                        >
+                            <ReportCard detail={report} />
                         </div>
                     );
                 })}
             </div>
+            <div className="bottom-indent2"></div>
         </Layout>
     );
 });
