@@ -9,6 +9,8 @@ export const CreateReport = observer(() => {
     const [imagePreview, setImagePreview] = useState<any>('');
     const [base64, setBase64] = useState<string>();
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [lat, setLat] = useState(0);
+    const [lng, setLng] = useState(0);
 
     const getBase64 = (file: any): Promise<any> => {
         return new Promise((resolve, reject) => {
@@ -31,6 +33,13 @@ export const CreateReport = observer(() => {
         }
     };
 
+    const getPosition = () => {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            setLat(position.coords.latitude);
+            setLng(position.coords.longitude);
+        });
+    };
+
     return (
         <Layout>
             <Head>
@@ -42,6 +51,7 @@ export const CreateReport = observer(() => {
                     <div className="space-y-4">
                         <TextField fullWidth required label="ปัญหา" defaultValue="" variant="outlined" />
                         <TextField fullWidth label="รายละเอียด" multiline rows={4} defaultValue="" variant="outlined" />
+                        <TextField fullWidth required label="สถานที่" defaultValue="" variant="outlined" />
                         <div className="flex justify-evenly">
                             <div>
                                 <div className="image-upload">
@@ -58,7 +68,7 @@ export const CreateReport = observer(() => {
                                 <span>แนบภาพถ่าย</span>
                             </div>
                             <div>
-                                <img src="/assets/location.png" width="55" className="m-auto" />
+                                <img src="/assets/location.png" width="55" className="m-auto" onClick={getPosition} />
                                 <span>ระบุพิกัดที่ตั้ง</span>
                             </div>
                         </div>
