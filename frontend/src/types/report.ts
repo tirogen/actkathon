@@ -1,6 +1,6 @@
 export type Report = {
     topic: string;
-    detail: string;
+    description: string;
     image: string;
     lat: string;
     lng: string;

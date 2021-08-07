@@ -4,13 +4,17 @@ import Head from 'next/head';
 import React, { useState } from 'react';
 import { BlackButton } from '../../components/black-button';
 import Layout from '../../components/layout';
+import ReportService from '../../services/report';
 
 export const CreateReport = observer(() => {
     const [imagePreview, setImagePreview] = useState<any>('');
-    const [base64, setBase64] = useState<string>();
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [lat, setLat] = useState(0);
-    const [lng, setLng] = useState(0);
+    const [base64, setBase64] = useState<string>('');
+    const [lat, setLat] = useState('0');
+    const [lng, setLng] = useState('0');
+
+    const [topic, setTopic] = useState('');
+    const [description, setDescription] = useState('');
+    const [location, setLocation] = useState('');
 
     const getBase64 = (file: any): Promise<any> => {
         return new Promise((resolve, reject) => {
@@ -35,8 +39,18 @@ export const CreateReport = observer(() => {
 
     const getPosition = () => {
         navigator.geolocation.getCurrentPosition(function (position) {
-            setLat(position.coords.latitude);
-            setLng(position.coords.longitude);
+            setLat(position.coords.latitude.toString());
+            setLng(position.coords.longitude.toString());
+        });
+    };
+
+    const createReport = () => {
+        ReportService.create({
+            topic,
+            description,
+            image: base64,
+            lat,
+            lng,
         });
     };
 
@@ -49,9 +63,37 @@ export const CreateReport = observer(() => {
                 <h1 className="text-2xl title-shadow text-center">รายงานปัญหา</h1>
                 <div className="mt-4">
                     <div className="space-y-4">
-                        <TextField fullWidth required label="ปัญหา" defaultValue="" variant="outlined" />
-                        <TextField fullWidth label="รายละเอียด" multiline rows={4} defaultValue="" variant="outlined" />
-                        <TextField fullWidth required label="สถานที่" defaultValue="" variant="outlined" />
+                        <TextField
+                            fullWidth
+                            required
+                            label="ปัญหา"
+                            defaultValue=""
+                            variant="outlined"
+                            onChange={(e) => {
+                                setTopic(e.target.value);
+                            }}
+                        />
+                        <TextField
+                            fullWidth
+                            label="รายละเอียด"
+                            multiline
+                            rows={4}
+                            defaultValue=""
+                            variant="outlined"
+                            onChange={(e) => {
+                                setDescription(e.target.value);
+                            }}
+                        />
+                        <TextField
+                            fullWidth
+                            required
+                            label="สถานที่"
+                            defaultValue=""
+                            variant="outlined"
+                            onChange={(e) => {
+                                setLocation(e.target.value);
+                            }}
+                        />
                         <div className="flex justify-evenly">
                             <div>
                                 <div className="image-upload">
@@ -73,7 +115,7 @@ export const CreateReport = observer(() => {
                             </div>
                         </div>
                         {imagePreview !== '' && <img src={imagePreview} alt="Icone adicionar" />}
-                        <BlackButton variant="contained" fullWidth>
+                        <BlackButton variant="contained" fullWidth onClick={createReport}>
                             รายงานปัญหา
                         </BlackButton>
                     </div>

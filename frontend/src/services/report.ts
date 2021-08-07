@@ -5,7 +5,7 @@ class ReportService {
     create(report: Report) {
         return axios.post('/report/create', {
             topic: report.topic,
-            description: report.detail,
+            description: report.description,
             latitude: report.lat,
             longitude: report.lng,
         });
