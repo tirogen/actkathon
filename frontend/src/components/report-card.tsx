@@ -8,9 +8,11 @@ const ReportCard = () => {
                         backgroundImage: 'url(https://images.unsplash.com/photo-1486673748761-a8d18475c757?w=600)',
                     }}
                 ></div>
-                <div className="report-detail">
+                <div className="report-detail overflow-hidden">
                     <h2>ทางเท้าชำรุด</h2>
-                    <p className="report-detail-text">รายละเอียด</p>
+                    <p className="report-detail-text">
+                        รายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียดรายละเอียด
+                    </p>
                 </div>
             </div>
             <div className="flex items-end">

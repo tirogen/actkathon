@@ -1,10 +1,8 @@
 import { observer } from 'mobx-react-lite';
 import Avatar from '@material-ui/core/Avatar';
 import Head from 'next/head';
-import router, { useRouter } from 'next/router';
 import React from 'react';
 import Layout from '../../components/layout';
-import ReportCard from '../../components/report-card';
 import DetailCard from '../../components/detail-card';
 
 export const ReportDetail = observer(() => {

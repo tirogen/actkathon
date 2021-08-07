@@ -130,6 +130,7 @@ div#__next > div {
 .report-image {
     width: 65px;
     height: 65px;
+    min-width: 65px;
     border-radius: 10px;
     border: solid 1px #000;
     background-size: cover;
