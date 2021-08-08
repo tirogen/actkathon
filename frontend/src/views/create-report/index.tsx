@@ -125,6 +125,7 @@ export const CreateReport = observer(() => {
                     </div>
                 </div>
             </div>
+            <div className="bottom-indent2"></div>
         </Layout>
     );
 });
